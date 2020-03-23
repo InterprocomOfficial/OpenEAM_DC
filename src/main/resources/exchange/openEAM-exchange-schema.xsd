@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.interprocom.ru/openEAM-client-exchange"
+	xmlns:tns="http://www.interprocom.ru/openEAM-client-exchange"
+	elementFormDefault="qualified">
+
+	<element name="openEAMPackage" type="tns:openEAMPackage"/>
+
+	<simpleType name="fieldTypeEnum">
+		<restriction base="string">
+			<enumeration value="ALN"/>
+			<enumeration value="NUMERIC"/>
+			<enumeration value="TABLE"/>
+			<enumeration value="INTEGER"/>
+			<enumeration value="DATE"/>
+			<enumeration value="YORN"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="settingTypeEnum">
+		<restriction base="string">
+			<enumeration value="ALN"/>
+			<enumeration value="NUMERIC"/>
+			<enumeration value="DATETIME"/>
+		</restriction>
+	</simpleType>
+
+	<complexType name="fieldSet">
+		<sequence>
+			<element name="field" type="tns:field" maxOccurs="unbounded" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="field">
+		<all>
+			<element name="name" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="useWith" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="type" type="tns:fieldTypeEnum" maxOccurs="1" minOccurs="1" nillable="true"/>
+			<element name="description" type="string" maxOccurs="1" minOccurs="0"/>
+			<element name="defaultValue" type="string" maxOccurs="1" minOccurs="0"/>
+			<element name="length" type="int" maxOccurs="1" minOccurs="0"/>
+		</all>
+	</complexType>
+
+	<complexType name="metaData">
+		<all>
+			<element name="fieldSet" type="tns:fieldSet" maxOccurs="1" minOccurs="0"/>
+			<element name="settingSet" type="tns:settingSet" maxOccurs="1" minOccurs="0"/>
+		</all>
+	</complexType>
+
+	<complexType name="asset">
+		<all>
+			<element name="assetNum" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="parent" type="string" maxOccurs="1" minOccurs="0"/>
+			<element name="fields" type="tns:objectFieldSet" maxOccurs="1" minOccurs="0"/>
+		</all>
+	</complexType>
+
+	<complexType name="objectFieldValue">
+		<all>
+			<element name="name" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="value" type="anySimpleType" maxOccurs="1" minOccurs="1"/>
+		</all>
+	</complexType>
+
+	<complexType name="objectFieldSet">
+		<sequence>
+			<element name="field" type="tns:objectFieldValue" maxOccurs="unbounded" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="assetSet">
+		<sequence>
+			<element name="asset" type="tns:asset" maxOccurs="unbounded" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="objectSets">
+		<all>
+			<element name="assetSet" type="tns:assetSet" maxOccurs="1" minOccurs="0"/>
+		</all>
+	</complexType>
+
+	<complexType name="openEAMPackage">
+		<all>
+			<element name="metaData" type="tns:metaData" maxOccurs="1" minOccurs="0"/>
+			<element name="objectSets" type="tns:objectSets" maxOccurs="1" minOccurs="0"/>
+		</all>
+		<attribute name="version" type="string"/>
+		<attribute name="creationDateTime" type="string"/>
+	</complexType>
+
+
+	<complexType name="settingSet">
+		<sequence>
+			<element name="setting" type="tns:setting" maxOccurs="unbounded" minOccurs="0"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="setting">
+		<all>
+			<element name="name" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="type" type="tns:settingTypeEnum" maxOccurs="1" minOccurs="1"/>
+			<element name="value" type="string" maxOccurs="1" minOccurs="1"/>
+		</all>
+	</complexType>
+
+</schema>

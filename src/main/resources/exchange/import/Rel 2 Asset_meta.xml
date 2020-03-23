@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openEAMPackage xmlns="http://www.interprocom.ru/openEAM-client-exchange" creationDateTime="2020-03-23T15:00:00+04:00" version="1.0.0">
+  <metaData>
+    <settingSet>
+      <setting>
+        <name>metaversion</name>
+        <type>ALN</type>
+        <value>1.0.0</value>
+      </setting>
+    </settingSet>
+    <fieldSet>
+      <field>
+        <name>DESCRIPTION</name>
+        <description>Наименование</description>
+        <useWith>ASSET</useWith>
+        <type>ALN</type>
+        <defaultValue />
+      </field>
+      <field>
+        <name>STATUS</name>
+        <description>Состояние</description>
+        <useWith>ASSET</useWith>
+        <type>ALN</type>
+        <length>20</length>
+        <defaultValue>ACTIVE</defaultValue>
+      </field>
+      <field>
+        <name>DESCRIPTION_LONGDESCRIPTION</name>
+        <description>Комментарий</description>
+        <useWith>ASSET</useWith>
+        <type>ALN</type>
+        <length>32000</length>
+        <defaultValue />
+      </field>
+    </fieldSet>
+  </metaData>
+  <objectSets>
+    <assetSet>
+      <asset>
+        <assetNum>A1</assetNum>
+        <parent />
+        <fields>
+          <field>
+            <name>DESCRIPTION</name>
+            <value>Система освещения</value>
+          </field>
+          <field>
+            <name>DESCRIPTION_LONGDESCRIPTION</name>
+            <value />
+          </field>
+          <field>
+            <name>STATUS</name>
+            <value>ACTIVE</value>
+          </field>
+        </fields>
+      </asset>
+      <asset>
+        <assetNum>A2</assetNum>
+        <parent />
+        <fields>
+          <field>
+            <name>DESCRIPTION</name>
+            <value>Цокольное помещение 5</value>
+          </field>
+          <field>
+            <name>DESCRIPTION_LONGDESCRIPTION</name>
+            <value />
+          </field>
+          <field>
+            <name>STATUS</name>
+            <value>ACTIVE</value>
+          </field>
+        </fields>
+      </asset>
+    </assetSet>
+  </objectSets>
+</openEAMPackage>
