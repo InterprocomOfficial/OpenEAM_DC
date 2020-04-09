@@ -33,12 +33,137 @@
         <defaultValue />
       </field>
     </fieldSet>
+    <classstructureSet>
+      <classstructure>
+        <classstructureId>1001</classstructureId>
+        <classificationId>AST_01</classificationId>
+        <status>ACTIVE</status>
+        <description>Класс 1</description>
+        <parent>1000</parent>
+        <useWith>
+          <object>ASSET</object>
+        </useWith>
+        <attributes>
+          <attribute>
+            <name>1010</name>
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>10</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1011</name>
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>20</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1012</name>
+            <section>Секция 2</section>
+            <subSection>Подсекция 2_1</subSection>
+            <attributePosition>10</attributePosition>
+            <sectionPosition>30</sectionPosition>
+            <subSectionPosition>10</subSectionPosition>
+          </attribute>
+        </attributes>
+      </classstructure>
+      <classstructure>
+        <classstructureId>1002</classstructureId>
+        <classificationId>AST_01_02</classificationId>
+        <status>ACTIVE</status>
+        <description>Класс 2</description>
+        <parent>1000</parent>
+        <useWith>
+          <object>ASSET</object>
+        </useWith>
+        <attributes>
+          <attribute>
+            <name>1010</name>
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>10</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1011</name>
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>20</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1013</name>
+            <section>Секция 2</section>
+            <subSection>Подсекция 2_1</subSection>
+            <attributePosition>20</attributePosition>
+            <sectionPosition>30</sectionPosition>
+            <subSectionPosition>10</subSectionPosition>
+          </attribute>
+        </attributes>
+      </classstructure>
+    </classstructureSet>
+    <attributeSet>
+      <attribute>
+        <name>1010</name>
+        <description>Атрибут 1</description>
+        <type>NUMERIC</type>
+      </attribute>
+      <attribute>
+        <name>1011</name>
+        <description>Атрибут 2</description>
+        <type>NUMERIC</type>
+      </attribute>
+      <attribute>
+        <name>1012</name>
+        <description>Атрибут 3</description>
+        <type>ALN</type>
+      </attribute>
+      <attribute>
+        <name>1013</name>
+        <description>Атрибут 4</description>
+        <type>ALN</type>
+      </attribute>
+    </attributeSet>
   </metaData>
   <objectSets>
     <assetSet>
       <asset>
         <assetNum>A1</assetNum>
+        <classstructure>1001</classstructure>
         <parent />
+        <attributes>
+          <attribute>
+            <name>1010</name>
+            <value />
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>10</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1011</name>
+            <value />
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>20</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1012</name>
+            <section>Секция 2</section>
+            <subSection>Подсекция 2_1</subSection>
+            <attributePosition>10</attributePosition>
+            <sectionPosition>30</sectionPosition>
+            <subSectionPosition>10</subSectionPosition>
+          </attribute>
+        </attributes>
         <fields>
           <field>
             <name>DESCRIPTION</name>
@@ -56,7 +181,34 @@
       </asset>
       <asset>
         <assetNum>A2</assetNum>
+        <classstructure>1002</classstructure>
         <parent />
+        <attributes>
+          <attribute>
+            <name>1010</name>
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>10</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1011</name>
+            <section>Секция 1</section>
+            <subSection>Подсекция 1_1</subSection>
+            <attributePosition>20</attributePosition>
+            <sectionPosition>20</sectionPosition>
+            <subSectionPosition>20</subSectionPosition>
+          </attribute>
+          <attribute>
+            <name>1013</name>
+            <section>Секция 2</section>
+            <subSection>Подсекция 2_1</subSection>
+            <attributePosition>20</attributePosition>
+            <sectionPosition>30</sectionPosition>
+            <subSectionPosition>10</subSectionPosition>
+          </attribute>
+        </attributes>
         <fields>
           <field>
             <name>DESCRIPTION</name>

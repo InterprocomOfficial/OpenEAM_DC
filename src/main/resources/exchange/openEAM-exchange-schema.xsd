@@ -5,6 +5,34 @@
 
 	<element name="openEAMPackage" type="tns:openEAMPackage"/>
 
+    <complexType name="classstructureSet">
+        <sequence>
+            <element name="classstructure" type="tns:classstructure" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+	<complexType name="classstructure">
+		<all>
+			<element name="classstructureId" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="classificationId" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="status" type="string" maxOccurs="1" minOccurs="1"/>
+			<element name="useWith" type="tns:useWithSet" maxOccurs="1" minOccurs="1"/>
+			<element name="description" type="string" maxOccurs="1" minOccurs="0"/>
+			<element name="parent" type="string" maxOccurs="1" minOccurs="0"/>
+			<element name="attributes" type="tns:classstructureAttributeSet" maxOccurs="1" minOccurs="0"/>
+		</all>
+	</complexType>
+
+    <simpleType name="attributeTypeEnum">
+        <restriction base="string">
+            <enumeration value="ALN"/>
+            <enumeration value="NUMERIC"/>
+            <enumeration value="TABLE"/>
+            <enumeration value="DATE"/>
+            <enumeration value="YORN"/>
+        </restriction>
+    </simpleType>
+
 	<simpleType name="fieldTypeEnum">
 		<restriction base="string">
 			<enumeration value="ALN"/>
@@ -23,6 +51,62 @@
 			<enumeration value="DATETIME"/>
 		</restriction>
 	</simpleType>
+
+    <complexType name="attribute">
+        <all>
+            <element name="name" type="string" maxOccurs="1" minOccurs="1"/>
+            <element name="description" type="string" maxOccurs="1" minOccurs="0"/>
+            <element name="type" type="tns:attributeTypeEnum" maxOccurs="1" minOccurs="1" nillable="true"/>
+        </all>
+    </complexType>
+
+    <complexType name="classstructureAttributeSet">
+        <sequence>
+            <element name="attribute" type="tns:objectAttributeToClassstructure" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="objectAttributeValue">
+        <all>
+            <element name="name" type="string" maxOccurs="1" minOccurs="1"/>
+            <element name="type" type="tns:attributeTypeEnum" maxOccurs="1" minOccurs="0"/>
+            <element name="value" type="anySimpleType" maxOccurs="1" minOccurs="1"/>
+            <element name="section" type="string" maxOccurs="1" minOccurs="0"/>
+            <element name="subSection" type="string" maxOccurs="1" minOccurs="0"/>
+            <element name="attributePosition" type="int" maxOccurs="1" minOccurs="0"/>
+            <element name="sectionPosition" type="int" maxOccurs="1" minOccurs="0"/>
+            <element name="subSectionPosition" type="int" maxOccurs="1" minOccurs="0"/>
+        </all>
+    </complexType>
+
+    <complexType name="objectAttributeSet">
+        <sequence>
+            <element name="attribute" type="tns:objectAttributeValue" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="attributeSet">
+        <sequence>
+            <element name="attribute" type="tns:attribute" maxOccurs="unbounded" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="objectAttributeToClassstructure">
+        <all>
+            <element name="name" type="string" maxOccurs="1" minOccurs="1"/>
+            <element name="section" type="string" maxOccurs="1" minOccurs="0"/>
+            <element name="subSection" type="string" maxOccurs="1" minOccurs="0"/>
+            <element name="attributePosition" type="int" maxOccurs="1" minOccurs="0"/>
+            <element name="sectionPosition" type="int" maxOccurs="1" minOccurs="0"/>
+            <element name="subSectionPosition" type="int" maxOccurs="1" minOccurs="0"/>
+        </all>
+    </complexType>
+
+    <complexType name="useWithSet">
+        <sequence>
+            <element name="object" type="string" maxOccurs="unbounded" minOccurs="1"/>
+        </sequence>
+    </complexType>
 
 	<complexType name="fieldSet">
 		<sequence>
@@ -43,6 +127,8 @@
 
 	<complexType name="metaData">
 		<all>
+            <element name="classstructureSet" type="tns:classstructureSet" maxOccurs="1" minOccurs="0"/>
+            <element name="attributeSet" type="tns:attributeSet" maxOccurs="1" minOccurs="0"/>
 			<element name="fieldSet" type="tns:fieldSet" maxOccurs="1" minOccurs="0"/>
 			<element name="settingSet" type="tns:settingSet" maxOccurs="1" minOccurs="0"/>
 		</all>
@@ -51,8 +137,10 @@
 	<complexType name="asset">
 		<all>
 			<element name="assetNum" type="string" maxOccurs="1" minOccurs="1"/>
+            <element name="classstructure" type="string" maxOccurs="1" minOccurs="0"/>
 			<element name="parent" type="string" maxOccurs="1" minOccurs="0"/>
 			<element name="fields" type="tns:objectFieldSet" maxOccurs="1" minOccurs="0"/>
+            <element name="attributes" type="tns:objectAttributeSet" maxOccurs="1" minOccurs="0"/>
 		</all>
 	</complexType>
 
@@ -78,6 +166,7 @@
 	<complexType name="objectSets">
 		<all>
 			<element name="assetSet" type="tns:assetSet" maxOccurs="1" minOccurs="0"/>
+
 		</all>
 	</complexType>
 
