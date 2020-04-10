@@ -51,6 +51,13 @@ public abstract class BeanPropertyValue extends SystemBean {
 		}
 	}
 
+	public boolean isValueSet() {
+		if (getType() == null) {
+			return false;
+		} else
+		return true;
+	}
+
 
 	public String getAlnValue() {
 		return alnValue;

@@ -2,6 +2,8 @@ package com.ipc.openeam.desktop.exchange;
 
 import com.ipc.openeam.desktop.bean.asset.Asset;
 import com.ipc.openeam.desktop.bean.field.Field;
+import com.ipc.openeam.desktop.bean.attribute.Attribute;
+import com.ipc.openeam.desktop.bean.classification.Classstructure;
 
 import java.util.stream.Stream;
 
@@ -22,6 +24,12 @@ public abstract class AbstractSystem implements BeanAccessible {
 	@Override public Stream<Asset> getAssets() {
 		return getIn().getAssets();
 	}
+	@Override public Stream<Attribute> getAttributes() {
+		return getIn().getAttributes();
+	}
+	@Override public Stream<Classstructure> getClassstructures() {
+		return getIn().getClassstructures();
+	}
 
 
 	public Field transform(Field field) {
@@ -32,4 +40,11 @@ public abstract class AbstractSystem implements BeanAccessible {
 		return asset;
 	}
 
+	public Attribute transform(Attribute attribute) {
+		return attribute;
+	}
+
+	public Classstructure transform(Classstructure classstructure) {
+		return classstructure;
+	}
 }

@@ -4,12 +4,12 @@ import java.util.*;
 
 import javax.persistence.*;
 
-import com.ipc.openeam.desktop.bean.BasicBean;
+import com.ipc.openeam.desktop.bean.BasicBeanWithClass;
 
 
 @Entity
 @Table(name="asset")
-public class Asset extends BasicBean{
+public class Asset extends BasicBeanWithClass{
 	@Column(unique=true, nullable=false)
 	private String assetNum;
 
@@ -33,6 +33,14 @@ public class Asset extends BasicBean{
 		return this.parent;
 	}
 
+	public void setChilds(List<Asset> childs) {
+		this.childs = childs;
+	}
+
+	public List<Asset> getChilds() {
+		return this.childs;
+	}
+
 	public void setAssetNum(String assetNum) {
 		this.assetNum = assetNum;
 	}
@@ -40,7 +48,6 @@ public class Asset extends BasicBean{
 	public String getAssetNum() {
 		return assetNum;
 	}
-
 
 
 }

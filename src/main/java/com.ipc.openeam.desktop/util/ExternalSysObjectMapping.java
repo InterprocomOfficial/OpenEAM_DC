@@ -2,6 +2,7 @@ package com.ipc.openeam.desktop.util;
 
 import com.ipc.openeam.desktop.bean.SystemBean;
 import com.ipc.openeam.desktop.bean.asset.Asset;
+import com.ipc.openeam.desktop.bean.classification.Classstructure;
 
 
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class ExternalSysObjectMapping {
 	static {
 		// Объекты
 		mapping.put("ASSET", Asset.class);
+		mapping.put("CLASSSTRUCTURE", Classstructure.class);
 
 		// Формирование обратного маппинга
 		reverseMapping = mapping.entrySet().stream().collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
