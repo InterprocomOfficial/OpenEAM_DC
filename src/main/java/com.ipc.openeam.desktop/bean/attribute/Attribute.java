@@ -80,5 +80,8 @@ public class Attribute extends SystemBean implements BeanProperty {
 		return attributesOnClass;
 	}
 
+	public String getDescription() {
+		return description;
+	}
 
 }

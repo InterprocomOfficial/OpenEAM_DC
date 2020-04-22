@@ -1,10 +1,14 @@
 package com.ipc.openeam.desktop.util;
 
+import javafx.util.StringConverter;
 import org.apache.log4j.Logger;
 import org.dom4j.Node;
 import org.dom4j.XPath;
 
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
@@ -14,8 +18,10 @@ public class Utils {
 			DateTimeFormatter.ofPattern(datepickerConverterPatern);
 	public static final String xsdSchemaPath = "/exchange/openEAM-exchange-schema.xsd";
 	public static final String openeamNamespace = "http://www.interprocom.ru/openEAM-client-exchange";
-
-
+	public static final DecimalFormat decimalFormat = new DecimalFormat("#.######",
+			DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+	public static final DecimalFormat integerFormat = new DecimalFormat("#",
+			DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
 
 
@@ -42,6 +48,30 @@ public class Utils {
 		XPath xpath = root.createXPath(path);
 		xpath.setNamespaceURIs(uris);
 		return xpath.selectNodes(root);
+	}
+
+	public static StringConverter<LocalDate> getDatepickerConverter() {
+		return new StringConverter<LocalDate>() {
+			DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(datepickerConverterPatern);
+
+			@Override
+			public String toString(LocalDate date) {
+				if (date != null) {
+					return dateFormatter.format(date);
+				} else {
+					return "";
+				}
+			}
+
+			@Override
+			public LocalDate fromString(String string) {
+				if (string != null && !string.isEmpty()) {
+					return LocalDate.parse(string, dateFormatter);
+				} else {
+					return null;
+				}
+			}
+		};
 	}
 
 }

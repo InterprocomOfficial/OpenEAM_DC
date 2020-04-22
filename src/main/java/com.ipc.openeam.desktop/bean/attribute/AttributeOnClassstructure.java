@@ -101,4 +101,26 @@ public class AttributeOnClassstructure extends SystemBean {
 		this.subSectionPosition = subSectionPosition;
 	}
 
+	public String getSection() {
+		return section;
+	}
+
+	public String getSubSection() {
+		return subSection;
+	}
+
+	public Integer getSectionPosition() {
+		return sectionPosition;
+	}
+
+	public Integer getSubSectionPosition() {
+		return subSectionPosition;
+	}
+
+	public Integer getAttributePosition() {
+		return attributePosition;
+	}
+
+
+
 }

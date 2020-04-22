@@ -2,6 +2,7 @@ package com.ipc.openeam.desktop.bean;
 
 
 import javax.persistence.*;
+import com.ipc.openeam.desktop.util.Utils;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -142,5 +143,23 @@ public abstract class BeanPropertyValue extends SystemBean {
 			throw new IllegalArgumentException("Value of yorn propertie should be Boolean");
 		}
 	}
+
+	public String getValueAsString(EntityManager em) {
+			if (getType().equals(BeanPropertyType.ALN)) {
+				return getAlnValue();
+			} else if (getType().equals(BeanPropertyType.NUMERIC)) {
+				return (getNumericValue() != null) ? Utils.decimalFormat.format(getNumericValue()) : null;
+			} else if (getType().equals(BeanPropertyType.INTEGER)) {
+				return (getNumericValue() != null) ? Utils.integerFormat.format(getNumericValue()) : null;
+			} else if (getType().equals(BeanPropertyType.YORN)) {
+				if (getYornValue() != null && getYornValue()) {
+					return "Да";
+				} else {
+					return "Нет";
+				}
+			}
+			return null;
+	}
+
 
 }

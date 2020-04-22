@@ -38,5 +38,11 @@ public abstract class BasicBean extends SystemBean {
 		this.fields = fields;
 	}
 
+	public FieldValue getField(String name) {
+		return getFields().get(name);
+	}
+	public void addField(FieldValue fieldValue) {
+		getFields().put(fieldValue.getField().getName(), fieldValue);
+	}
 
 }

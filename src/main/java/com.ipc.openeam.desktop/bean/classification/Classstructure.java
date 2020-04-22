@@ -113,4 +113,12 @@ public class Classstructure extends SystemBean  {
 				attr -> attr
 		));
 	}
+
+	public AttributeOnClassstructure findAttrOnClass(String name) {
+		if (attributeMapping == null) {
+			attributeMapping = getAttributeMapping();
+		}
+		return attributeMapping.get(name);
+	}
+
 }

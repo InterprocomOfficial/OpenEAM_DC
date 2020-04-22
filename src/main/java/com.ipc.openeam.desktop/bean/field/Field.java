@@ -110,6 +110,10 @@ public class Field extends SystemBean implements BeanProperty {
 		this.description = description;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
 	public BeanPropertyType getType() {
 		return type;
 	}

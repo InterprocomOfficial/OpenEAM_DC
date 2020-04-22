@@ -48,4 +48,26 @@ public abstract class BasicBeanWithClass extends BasicBean {
 		this.attributes = attributes;
 	}
 
+	public AttributeValue findAttributeByName(String name, boolean reload) {
+		if (attributeMapping == null || reload) {
+			attributeMapping = new HashMap<>();
+		}
+		if (!attributeMapping.containsKey(name)) {
+			getAttributes().stream().filter(attr -> attr.getAttributeOnClass().getAttribute().getName().equals(name))
+					.findAny().ifPresent(attr -> {
+				attributeMapping.put(name, attr);
+			});
+		}
+		return attributeMapping.get(name);
+	}
+
+	public AttributeValue findAttributeByName(String name) {
+		return findAttributeByName(name, false);
+	}
+
+	public void addAttribute(AttributeValue attrValue) {
+		if (!getAttributes().contains(attrValue)) {
+			getAttributes().add(attrValue);
+		}
+	}
 }
