@@ -419,12 +419,10 @@ public abstract class BasicController implements Initializable {
 					((TextField) attributeField).setText(attrValueObject.toString());
 				}
 			} else if (attribute.getType().equals(BeanPropertyType.NUMERIC)) {
-				// У атрибутов не может быть тип INTEGER
 				attributeField = new TextField();
 				attributeField.setId(attribute.getName());
 				if (attrValueObject != null) {
 					((TextField) attributeField).setText(Utils.decimalFormat.format(attrValueObject));
-				// Проставляем значение по умолчания только в том случае если объект новый
 				}
 			} else {
 				throw new IllegalArgumentException(String.format("Attribute %s can not be displayed", attribute));
